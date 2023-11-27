@@ -16,19 +16,27 @@ import org.springframework.context.annotation.Configuration;
 // 실제 동작에 필요한 구현 객체를 생성하고 생성자를 통해서 주입한다.
 public class AppConfig {
 
+    // @Bean memberService → new MemoryMemberRepository()
+    // @Bean orderService → new MemoryMemberRepository()
+    // 2번 호출되서 인스턴스 생성 → 싱글톤 패턴 깨짐?
+
+    // 예상 memberRepository가 3번 호출해야 하지만 1번만 호출
+
     @Bean // 스프링 컨테이너에 등록됨
     public MemberService memberService() {
-        
+//        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
-    public static MemberRepository memberRepository() {
+    public MemberRepository memberRepository() {
+//        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService() {
+//        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 

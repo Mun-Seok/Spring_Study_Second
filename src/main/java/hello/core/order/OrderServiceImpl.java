@@ -16,7 +16,7 @@ public class OrderServiceImpl implements OrderService{
     private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
     // 할인 정책 변경 → 추상(인터페이스) 의존하지만 구체(구현) 클래스에도 의존하고 있음(DIP위반), ServiceImpl 코드 변경해야 함(OCP위반)
 */
-    private final MemberRepository memberRepository;
+    private final MemberRepository memberRepository; // final - 생성자에서만 만들 수 있음
     private final DiscountPolicy discountPolicy;
 
 /*    @Autowired // 수정자 주입

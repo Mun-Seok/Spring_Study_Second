@@ -18,8 +18,8 @@ import org.springframework.context.annotation.FilterType;
 public class AutoAppConfig {
 
     // 같은 빈 수동으로 등록 -> 수동 빈이 자동 빈 오버라이딩한다. but springboot가 수동 빈 자동 빈 등록시 오류, application.properties에서 바꿀 수 있음
-    @Bean(name = "memoryMemberRepository")
+/*    @Bean(name = "memoryMemberRepository")
     MemberRepository memberRepository() {
         return new MemoryMemberRepository();
-    }
+    }*/
 }
